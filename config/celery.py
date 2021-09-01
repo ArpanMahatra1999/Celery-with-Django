@@ -14,6 +14,14 @@ app = Celery('config')
 #   should have a `CELERY_` prefix.
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
+app.conf.beat_schedule = {
+    'every-15-seconds': {
+        'task': 'notification.tasks.send_email',
+        'schedule': 15,
+        'args': ('arpanmahatra1999ad@gmail.com',),
+    }
+}
+
 # Load task modules from all registered Django apps.
 app.autodiscover_tasks()
 
