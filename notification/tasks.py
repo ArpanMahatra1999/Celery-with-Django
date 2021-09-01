@@ -6,5 +6,5 @@ import time
 
 @shared_task
 def sum(a,b):
-    time.sleep(5)
+    time.sleep(10)
     return a+b
